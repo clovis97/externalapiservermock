@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import (
+from orangemockapi.views import (
     OrangeB2CMockView, OrangeC2BMockView, OrangeAiritmeBalanceMockView,
     OrangeAirtimeMockView, OrangeAirtimeCheckTransMockView, OrangeSmsMockView,
     OrangeCashBalanceMockView, OrangeCashCheckTransMockView

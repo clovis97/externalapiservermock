@@ -5,8 +5,7 @@ import os
 
 class VodacashB2CMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """            
-            <?xml version='1.0' encoding='UTF-8'?>
+        response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
 xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -99,14 +98,12 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
     </SOAPAPIResult>
     </ns2:getGenericResultResponse>
     </S:Body>
-    </S:Envelope>
-"""
+    </S:Envelope>"""
         return Response(response_xml, content_type='text/xml')
     
 class VodacashB2CLoginMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<?xml version='1.0' encoding='UTF-8'?>
+        response_xml = """<?xml version='1.0' encoding='UTF-8'?>
             <S:Envelope
             xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
             xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -149,14 +146,12 @@ class VodacashB2CLoginMockView(APIView):
             </SOAPAPIResult>
             </ns2:getGenericResultResponse>
             </S:Body>
-            </S:Envelope>
-"""
+            </S:Envelope>"""
         return Response(response_xml, content_type='text/xml')
     
 class VodacashC2BMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<?xml version='1.0' encoding='UTF-8'?>
+        response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
 xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -259,15 +254,13 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
 </SOAPAPIResult>
 </ns2:getGenericResultResponse>
 </S:Body>
-</S:Envelope>
-"""
+</S:Envelope>"""
         return Response(response_xml, content_type='text/xml')
     
 
 class VodacashC2BLoginMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<?xml version='1.0' encoding='UTF-8'?>
+        response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
 xmlns:S="http://schemas.xmlsoap.org/soap/envelope/"
 xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
@@ -310,14 +303,12 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
 </SOAPAPIResult>
 </ns2:getGenericResultResponse>
 </S:Body>
-</S:Envelope>
-"""
+</S:Envelope>"""
         return Response(response_xml, content_type='text/xml')
     
 class VodacashAirtimeBalanceMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Body>
         <api:Result
             xmlns:api="http://cps.huawei.com/synccpsinterface/api_requestmgr"
@@ -356,14 +347,12 @@ class VodacashAirtimeBalanceMockView(APIView):
 </res:Body>
 </api:Result>
 </soapenv:Body>
-</soapenv:Envelope>
-"""
+</soapenv:Envelope>"""
         return Response(response_xml, content_type='text/xml')
     
 class VodacashAirtimeMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
 <soapenv:Body>
 <api:Result
 xmlns:api="http://cps.huawei.com/synccpsinterface/api_requestmgr"
@@ -423,6 +412,5 @@ EVC</res:AccountTypeAlias>
 </res:Body>
 </api:Result>
 </soapenv:Body>
-</soapenv:Envelope>
-"""
+</soapenv:Envelope>"""
         return Response(response_xml, content_type='text/xml')

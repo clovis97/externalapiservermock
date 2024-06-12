@@ -5,8 +5,7 @@ import os
 
 class OrangeB2CMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
  <ns2:doM2SResponse xmlns:ns2="http://services.ws1.com/">
  <return>
@@ -23,8 +22,7 @@ class OrangeB2CMockView(APIView):
 
 class OrangeC2BMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
  <ns2:doS2MResponse xmlns:ns2="http://services.ws1.com/">
  <return>
@@ -42,8 +40,7 @@ class OrangeC2BMockView(APIView):
 
 class OrangeAiritmeBalanceMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
+        response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
 1.0//EN” “xml/command.dtd”><COMMAND> <TYPE>EXUSRBALRESP</TYPE>
 <TXNSTATUS>Transaction Status</TXNSTATUS> 
 <DATE>Date and time</DATE>
@@ -62,15 +59,13 @@ class OrangeAiritmeBalanceMockView(APIView):
    <PRODUCTCODE>01</PRODUCTCODE> 
    <PRODUCTSHORTNAME>Short code of product</PRODUCTSHORTNAME> 
    <BALANCE>0</BALANCE> </RECORD> 
-   <MESSAGE>Message test</MESSAGE> </COMMAND>
-  """
+   <MESSAGE>Message test</MESSAGE> </COMMAND>"""
         return Response(response_xml, content_type='text/xml')
 
 
 class OrangeAirtimeMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
+        response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
 1.0//EN” “xml/command.dtd”>
 <COMMAND>
 <TYPE>EXRCTRFRESP</TYPE>
@@ -85,8 +80,7 @@ class OrangeAirtimeMockView(APIView):
     
 class OrangeAirtimeCheckTransMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command 1.0//EN” “xml/command.dtd”> 
+        response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command 1.0//EN” “xml/command.dtd”> 
 <COMMAND> 
 <TYPE>EXRCSTATRESP</TYPE>
  <TXNSTATUS>Transaction Status</TXNSTATUS>
@@ -95,14 +89,12 @@ class OrangeAirtimeCheckTransMockView(APIView):
    <TXNID>PreTUPS Transaction ID</TXNID>
     <REQSTATUS>Request Status</REQSTATUS>
      <MESSAGE>Message</MESSAGE> 
-     </COMMAND>
-  """
+     </COMMAND>"""
         return Response(response_xml, content_type='text/plain')
     
 class OrangeSmsMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
  <ns2:sendSMSResponse xmlns:ns2="http://services.ws.com/">
  <return>
@@ -113,14 +105,12 @@ class OrangeSmsMockView(APIView):
  </return>
  </ns2:sendSMSResponse>
  </S:Body>
-</S:Envelope>
-  """
+</S:Envelope>"""
         return Response(response_xml, content_type='text/plain')
     
 class OrangeCashBalanceMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
  <ns2:TcheckBalResponse xmlns:ns2="http://services.ws1.com/">
  <return>
@@ -132,14 +122,12 @@ class OrangeCashBalanceMockView(APIView):
  </return>
  </ns2:TcheckBalResponse>
  </S:Body>
-</S:Envelope>
-  """
+</S:Envelope>"""
         return Response(response_xml, content_type='text/plain')
     
 class OrangeCashCheckTransMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_xml = """
-  <S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+        response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
  <ns2:doCheckTransResponse xmlns:ns2="http://services.ws1.com/">
  <return>
@@ -151,6 +139,5 @@ class OrangeCashCheckTransMockView(APIView):
  </return>
  </ns2:doCheckTransResponse>
  </S:Body>
-</S:Envelope>
-  """
+</S:Envelope>"""
         return Response(response_xml, content_type='text/plain')
