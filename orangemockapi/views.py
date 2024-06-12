@@ -74,8 +74,7 @@ class OrangeAirtimeMockView(APIView):
 <EXTREFNUM>Unique Reference number in the external system</EXTREFNUM>
 <TXNID>PreTUPS Transaction ID</TXNID>
 <MESSAGE>Transaction Message</MESSAGE>
-</COMMAND>
-  """
+</COMMAND>"""
         return Response(response_xml, content_type='text/plain')
     
 class OrangeAirtimeCheckTransMockView(APIView):
