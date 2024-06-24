@@ -1,6 +1,22 @@
 from django.shortcuts import render
+from rest_framework.parsers import BaseParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.renderers import BaseRenderer
+
+class PlainTextParser(BaseParser):
+    media_type = 'text/plain'
+
+    def parse(self, stream, media_type=None, parser_context=None):
+        return stream.read().decode('utf-8')
+
+class PlainTextRenderer(BaseRenderer):
+    media_type = 'text/plain'
+    format = 'txt'
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return str(data).encode(self.charset)
+
 
 class AirtelB2CLoginMockView(APIView):
     def post(self, request, *args, **kwargs):
@@ -13,6 +29,8 @@ class AirtelB2CLoginMockView(APIView):
 
 
 class AirtelC2BLoginMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
       "token_type": 'token_type',
@@ -22,6 +40,8 @@ class AirtelC2BLoginMockView(APIView):
         return Response(response_data)
 
 class AirtelC2BMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "data": {
@@ -43,6 +63,8 @@ class AirtelC2BMockView(APIView):
 
 
 class AirtelB2CMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "data": {
@@ -65,6 +87,8 @@ class AirtelB2CMockView(APIView):
 
 
 class AirtelDataMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
 <?xml version="1.0"?>
@@ -80,6 +104,8 @@ class AirtelDataMockView(APIView):
         return Response(response_xml, content_type='text/xml')
     
 class AirtelTopupBalanceMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
  <?xml version="1.0"?>
@@ -106,6 +132,8 @@ class AirtelTopupBalanceMockView(APIView):
     
 
 class AirtelTopupMockView(APIView):
+    parser_classes = [PlainTextParser]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
  <?xml version="1.0"?>

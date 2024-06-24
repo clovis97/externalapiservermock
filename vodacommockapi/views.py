@@ -1,9 +1,18 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-import os
+from rest_framework.renderers import BaseRenderer
+
+class XMLRenderer(BaseRenderer):
+    media_type = 'application/xml'
+    format = 'xml'
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return data.encode('utf-8')
+
 
 class VodacashB2CMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
@@ -102,6 +111,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
         return Response(response_xml, content_type='text/xml')
     
 class VodacashB2CLoginMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version='1.0' encoding='UTF-8'?>
             <S:Envelope
@@ -150,6 +160,7 @@ class VodacashB2CLoginMockView(APIView):
         return Response(response_xml, content_type='text/xml')
     
 class VodacashC2BMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
@@ -259,6 +270,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
     
 
 class VodacashC2BLoginMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version='1.0' encoding='UTF-8'?>
 <S:Envelope
@@ -307,6 +319,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
         return Response(response_xml, content_type='text/xml')
     
 class VodacashAirtimeBalanceMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Body>
@@ -351,6 +364,7 @@ class VodacashAirtimeBalanceMockView(APIView):
         return Response(response_xml, content_type='text/xml')
     
 class VodacashAirtimeMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
 <soapenv:Body>
