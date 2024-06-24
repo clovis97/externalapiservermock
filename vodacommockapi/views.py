@@ -386,45 +386,5 @@ xmlns:res="http://cps.huawei.com/synccpsinterface/result">
 </res:Body>
 </api:Result>
 </soapenv:Body>
-</soapenv:Envelope>` },
-{ id: 6, xml: `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-<soapenv:Body>
-<api:Result
-xmlns:api="http://cps.huawei.com/synccpsinterface/api_requestmgr"
-xmlns:res="http://cps.huawei.com/synccpsinterface/result">
-<res:Header>
-<res:Version>1.0</res:Version>
-<res:OriginatorConversationID>S_X2013012921001</res:OriginatorConversationID>
-<res:ConversationID>AG_20130129T102103</res:ConversationID>
-</res:Header>
-<res:Body>
-<res:ResultType>0</res:ResultType>
-<res:ResultCode>0</res:ResultCode>
-<res:ResultDesc>Process service request successfully.</res:ResultDesc>
-<res:QueryOrganizationBalanceResult>
-<res:BOCompletedTime>20180404185018</res:BOCompletedTime>
-<res:AccountBalanceData>
-<res:AccountBalanceItem>
-<res:AccountHolderID>1000</res:AccountHolderID>
-<res:AccountHolderPublicName>1000 -
-1000</res:AccountHolderPublicName>
-<res:AccountTypeName>Agent Airtime Account for
-EVC</res:AccountTypeName>
-<res:AccountTypeAlias>Agent Airtime Account for
-EVC</res:AccountTypeAlias>
-<res:AccountNo>500000000200090032</res:AccountNo>
-<res:AccountName>DefaultAccount</res:AccountName>
-<res:AccountStatus>Active</res:AccountStatus>
-<res:Currency>USD</res:Currency>
-<res:AvailableBalance>68.00</res:AvailableBalance>
-<res:ReservedBalance>0.00</res:ReservedBalance>
-<res:UnclearedBalance>0.00</res:UnclearedBalance>
-<res:CurrentBalance>68.00</res:CurrentBalance>
-</res:AccountBalanceItem>
-</res:AccountBalanceData>
-</res:QueryOrganizationBalanceResult>
-</res:Body>
-</api:Result>
-</soapenv:Body>
-</soapenv:Envelope>"""
+</soapenv:Envelope>`"""
         return Response(response_xml, content_type='text/xml')
