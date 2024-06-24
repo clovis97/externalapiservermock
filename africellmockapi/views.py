@@ -315,16 +315,24 @@ class AfricellSendSmsMockView(APIView):
 }
         return Response(response_data)
     
+import logging
+
+logger = logging.getLogger(__name__)
+
 class AfricellTopUpMockView(APIView):
-    renderer_classes = [JSONRenderer]
+    renderer_classes = [PlainTextRenderer]
+
     def post(self, request, *args, **kwargs):
-        response_data = {
-            "Code": '0',
-            "Description": 'Successful',
-            "MMTransactionID": '1234',
-            "AfrTransactionID": '1234',
-            }
-        return Response(response_data)
+        logger.info("Received request: %s", request.data)
+        response_data = """{
+            "Code": "0",
+            "Description": "Successful",
+            "MMTransactionID": "1234",
+            "AfrTransactionID": "1234"
+        }"""
+        logger.info("Sending response: %s", response_data)
+        return Response(response_data, content_type='text/plain')
+
     
 class AfricellTransactionLoadMockView(APIView):
     def post(self, request, *args, **kwargs):
