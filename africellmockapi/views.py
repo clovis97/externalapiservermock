@@ -1,7 +1,15 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.renderers import JSONRenderer
+from rest_framework.renderers import JSONRenderer, BaseRenderer
+
+class PlainTextRenderer(BaseRenderer):
+    media_type = 'text/plain'
+    format = 'txt'
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return str(data).encode(self.charset)
+
 
 class AfricellB2CMockView(APIView):
     def post(self, request, *args, **kwargs):
@@ -308,7 +316,7 @@ class AfricellSendSmsMockView(APIView):
         return Response(response_data)
     
 class AfricellTopUpMockView(APIView):
-    renderer_classes = [JSONRenderer]
+    renderer_classes = [JSONRenderer, PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "Code": '0',
