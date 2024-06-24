@@ -1,7 +1,14 @@
 from django.shortcuts import render
+from rest_framework.parsers import BaseParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer, BaseRenderer
+
+class PlainTextParser(BaseParser):
+    media_type = 'text/plain'
+
+    def parse(self, stream, media_type=None, parser_context=None):
+        return stream.read().decode('utf-8')
 
 class PlainTextRenderer(BaseRenderer):
     media_type = 'text/plain'
@@ -320,6 +327,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class AfricellTopUpMockView(APIView):
+    parser_classes = [PlainTextParser]
     renderer_classes = [PlainTextRenderer]
 
     def post(self, request, *args, **kwargs):
