@@ -4,6 +4,13 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import BaseRenderer
 
+class XMLRenderer(BaseRenderer):
+    media_type = 'application/xml'
+    format = 'xml'
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return data.encode('utf-8')
+
 class PlainTextParser(BaseParser):
     media_type = 'text/plain'
 
@@ -20,11 +27,11 @@ class PlainTextRenderer(BaseRenderer):
 
 class AirtelB2CLoginMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_data = {
+        response_data = """{
       "token_type": 'token_type',
       "expires_in": 'expires_in',
       "access_token": 'access_token',
-    }
+    }"""
         return Response(response_data)
 
 
@@ -32,18 +39,18 @@ class AirtelC2BLoginMockView(APIView):
     parser_classes = [PlainTextParser]
     renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = {
+        response_data = """{
       "token_type": 'token_type',
       "expires_in": 'expires_in',
       "access_token": 'access_token',
-    }
+    }"""
         return Response(response_data)
 
 class AirtelC2BMockView(APIView):
     parser_classes = [PlainTextParser]
     renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = {
+        response_data = """{
   "data": {
     "message": 'Transaction Successful',
     "status": 'SUCCESS',
@@ -58,7 +65,7 @@ class AirtelC2BMockView(APIView):
     "response_code": 'DP01000001001',
     "success": "true",
   },
-}
+}"""
         return Response(response_data)
 
 
@@ -66,7 +73,7 @@ class AirtelB2CMockView(APIView):
     parser_classes = [PlainTextParser]
     renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = {
+        response_data = """{
   "data": {
     "transaction": {
       "reference_id": '18*****3354',
@@ -82,13 +89,12 @@ class AirtelB2CMockView(APIView):
     "response_code": 'DP00900001001',
     "success": "true",
   },
-}
+}"""
         return Response(response_data)
 
 
 class AirtelDataMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
 <?xml version="1.0"?>
@@ -104,8 +110,7 @@ class AirtelDataMockView(APIView):
         return Response(response_xml, content_type='text/xml')
     
 class AirtelTopupBalanceMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
  <?xml version="1.0"?>
@@ -132,8 +137,7 @@ class AirtelTopupBalanceMockView(APIView):
     
 
 class AirtelTopupMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """
  <?xml version="1.0"?>

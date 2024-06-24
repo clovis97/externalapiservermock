@@ -1,11 +1,6 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-import os
 from rest_framework.renderers import BaseRenderer
-import xml.etree.ElementTree as ET
-
-
 
 class XMLRenderer(BaseRenderer):
     media_type = 'application/xml'
