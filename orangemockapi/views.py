@@ -2,6 +2,18 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import os
+from rest_framework.renderers import BaseRenderer
+import xml.etree.ElementTree as ET
+
+
+
+class XMLRenderer(BaseRenderer):
+    media_type = 'application/xml'
+    format = 'xml'
+
+    def render(self, data, accepted_media_type=None, renderer_context=None):
+        return data.encode('utf-8')
+
 
 class OrangeB2CMockView(APIView):
     def post(self, request, *args, **kwargs):
@@ -39,6 +51,7 @@ class OrangeC2BMockView(APIView):
 
 
 class OrangeAiritmeBalanceMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
 1.0//EN” “xml/command.dtd”><COMMAND> <TYPE>EXUSRBALRESP</TYPE>
@@ -64,6 +77,7 @@ class OrangeAiritmeBalanceMockView(APIView):
 
 
 class OrangeAirtimeMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command
 1.0//EN” “xml/command.dtd”>
