@@ -331,7 +331,7 @@ class AfricellTopUpMockView(APIView):
             "AfrTransactionID": "1234"
         }"""
         logger.info("Sending response: %s", response_data)
-        return Response(response_data, content_type='text/plain')
+        return Response(response_data)
 
     
 class AfricellTransactionLoadMockView(APIView):
