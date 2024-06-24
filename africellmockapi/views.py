@@ -318,12 +318,12 @@ class AfricellSendSmsMockView(APIView):
 class AfricellTopUpMockView(APIView):
     renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = """{
+        response_data = {
   "Code": '0',
   "Description": 'Successful',
   "MMTransactionID": '1234',
   "AfrTransactionID": '1234',
-}"""
+}
         return Response(response_data)
     
 class AfricellTransactionLoadMockView(APIView):
