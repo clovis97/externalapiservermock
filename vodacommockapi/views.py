@@ -108,7 +108,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
     </ns2:getGenericResultResponse>
     </S:Body>
     </S:Envelope>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
     
 class VodacashB2CLoginMockView(APIView):
     renderer_classes = [XMLRenderer]
@@ -157,7 +157,7 @@ class VodacashB2CLoginMockView(APIView):
             </ns2:getGenericResultResponse>
             </S:Body>
             </S:Envelope>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
     
 class VodacashC2BMockView(APIView):
     renderer_classes = [XMLRenderer]
@@ -266,7 +266,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
 </ns2:getGenericResultResponse>
 </S:Body>
 </S:Envelope>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
     
 
 class VodacashC2BLoginMockView(APIView):
@@ -316,7 +316,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
 </ns2:getGenericResultResponse>
 </S:Body>
 </S:Envelope>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
     
 class VodacashAirtimeBalanceMockView(APIView):
     renderer_classes = [XMLRenderer]
@@ -361,7 +361,7 @@ class VodacashAirtimeBalanceMockView(APIView):
 </api:Result>
 </soapenv:Body>
 </soapenv:Envelope>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/palin')
     
 class VodacashAirtimeMockView(APIView):
     renderer_classes = [XMLRenderer]
@@ -387,4 +387,4 @@ xmlns:res="http://cps.huawei.com/synccpsinterface/result">
 </api:Result>
 </soapenv:Body>
 </soapenv:Envelope>`"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
