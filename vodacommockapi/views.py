@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import BaseRenderer
@@ -108,7 +107,7 @@ xmlns:ns3="http://www.4cgroup.co.za/soapauth">
     </ns2:getGenericResultResponse>
     </S:Body>
     </S:Envelope>"""
-        return Response(response_xml, content_type='text/plain')
+        return Response(response_xml, content_type='text/xml')
     
 class VodacashB2CLoginMockView(APIView):
     renderer_classes = [XMLRenderer]
