@@ -11,6 +11,7 @@ class XMLRenderer(BaseRenderer):
 
 
 class OrangeB2CMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
@@ -68,7 +69,7 @@ class OrangeAiritmeBalanceMockView(APIView):
    <PRODUCTSHORTNAME>Short code of product</PRODUCTSHORTNAME> 
    <BALANCE>0</BALANCE> </RECORD> 
    <MESSAGE>Message test</MESSAGE> </COMMAND>"""
-        return Response(response_xml, content_type='text/xml')
+        return Response(response_xml, content_type='text/plain')
 
 
 class OrangeAirtimeMockView(APIView):
@@ -87,6 +88,7 @@ class OrangeAirtimeMockView(APIView):
         return Response(response_xml, content_type='text/plain')
     
 class OrangeAirtimeCheckTransMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<?xml version=“1.0”?><!DOCTYPE COMMAND PUBLIC “-//Ocam//DTD XML Command 1.0//EN” “xml/command.dtd”> 
 <COMMAND> 
@@ -101,6 +103,7 @@ class OrangeAirtimeCheckTransMockView(APIView):
         return Response(response_xml, content_type='text/plain')
     
 class OrangeSmsMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
@@ -117,6 +120,7 @@ class OrangeSmsMockView(APIView):
         return Response(response_xml, content_type='text/plain')
     
 class OrangeCashBalanceMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
@@ -134,6 +138,7 @@ class OrangeCashBalanceMockView(APIView):
         return Response(response_xml, content_type='text/plain')
     
 class OrangeCashCheckTransMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
