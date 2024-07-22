@@ -29,6 +29,7 @@ class OrangeB2CMockView(APIView):
         return Response(response_xml, content_type='text/plain')
 
 class OrangeC2BMockView(APIView):
+    renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
         response_xml = """<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
  <S:Body>
