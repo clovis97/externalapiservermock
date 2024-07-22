@@ -25,49 +25,50 @@ class PlainTextRenderer(BaseRenderer):
     def render(self, data, accepted_media_type=None, renderer_context=None):
         return str(data).encode(self.charset)
 
-
 class AirtelB2CLoginMockView(APIView):
+    renderer_classes = [JSONRenderer]
+
     def post(self, request, *args, **kwargs):
-        response_data = """{
-      "token_type": 'token_type',
-      "expires_in": 'expires_in',
-      "access_token": 'access_token',
-    }"""
+        response_data = {
+            "token_type": "token_type",
+            "expires_in": "expires_in",
+            "access_token": "access_token",
+        }
         return Response(response_data)
 
-
 class AirtelC2BLoginMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    renderer_classes = [JSONRenderer]
+
     def post(self, request, *args, **kwargs):
-        response_data = """{
-      "token_type": 'token_type',
-      "expires_in": 'expires_in',
-      "access_token": 'access_token',
-    }"""
+        response_data = {
+            "token_type": "token_type",
+            "expires_in": "expires_in",
+            "access_token": "access_token",
+        }
         return Response(response_data)
 
 class AirtelC2BMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    renderer_classes = [JSONRenderer]
+
     def post(self, request, *args, **kwargs):
-        response_data = """{
-  "data": {
-    "message": 'Transaction Successful',
-    "status": 'SUCCESS',
-    "transaction": {
-      "airtel_money_id": 'product-partner-ABCD1234',
-      "id": 'ABCD1234',
-    },
-  },
-  "status": {
-    "code": '200',
-    "message": 'SUCCESS',
-    "response_code": 'DP01000001001',
-    "success": "true",
-  },
-}"""
+        response_data = {
+            "data": {
+                "message": "Transaction Successful",
+                "status": "SUCCESS",
+                "transaction": {
+                    "airtel_money_id": "product-partner-ABCD1234",
+                    "id": "ABCD1234",
+                },
+            },
+            "status": {
+                "code": "200",
+                "message": "SUCCESS",
+                "response_code": "DP01000001001",
+                "success": "true",
+            },
+        }
         return Response(response_data)
+
 
 
 class AirtelB2CMockView(APIView):
