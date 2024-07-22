@@ -97,8 +97,7 @@ class AirtelB2CMockView(APIView):
 class AirtelDataMockView(APIView):
     renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
-        response_xml = """
-<?xml version="1.0"?>
+        response_xml = """<?xml version="1.0"?>
 <COMMAND>
 <TYPE> VASSELLRESP</TYPE>
 <TXNSTATUS>200</TXNSTATUS >
@@ -106,15 +105,13 @@ class AirtelDataMockView(APIView):
 <EXTREFNUM>4223455</EXTREFNUM>
 <TXNID>543</TXNID>
 <MESSAGE>SUCCESS</MESSAGE>
-</COMMAND>
-  """
+</COMMAND>"""
         return Response(response_xml, content_type='text/xml')
     
 class AirtelTopupBalanceMockView(APIView):
     renderer_classes = [XMLRenderer]
     def post(self, request, *args, **kwargs):
-        response_xml = """
- <?xml version="1.0"?>
+        response_xml = """<?xml version="1.0"?>
 <COMMAND>
 <TYPE>EXUSRBALRESP</TYPE>
 <TXNSTATUS>200</TXNSTATUS>
@@ -131,9 +128,7 @@ class AirtelTopupBalanceMockView(APIView):
 <BALANCE>500</BALANCE>
 </RECORD>
 <MESSAGE>SUCCESS</MESSAGE>
-
-</COMMAND>
-  """
+</COMMAND>"""
         return Response(response_xml, content_type='text/xml')
     
 

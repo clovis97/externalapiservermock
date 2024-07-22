@@ -385,5 +385,5 @@ xmlns:res="http://cps.huawei.com/synccpsinterface/result">
 </res:Body>
 </api:Result>
 </soapenv:Body>
-</soapenv:Envelope>`"""
+</soapenv:Envelope>"""
         return Response(response_xml, content_type='text/plain')

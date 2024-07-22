@@ -55,7 +55,7 @@ class AfricellDataBundleMockView(APIView):
     
 class AfricellDataBundleListMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_data = data = [
+        response_data = [
     {
         "CatOrder": 1,
         "Name": "Forfait Internet",
