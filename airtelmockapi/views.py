@@ -70,8 +70,8 @@ class AirtelC2BMockView(APIView):
 
 
 class AirtelB2CMockView(APIView):
-    parser_classes = [PlainTextParser]
-    renderer_classes = [PlainTextRenderer]
+    # parser_classes = [PlainTextParser]
+    # renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = """{
   "data": {
