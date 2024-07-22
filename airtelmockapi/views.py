@@ -2,7 +2,8 @@ from django.shortcuts import render
 from rest_framework.parsers import BaseParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.renderers import BaseRenderer
+from rest_framework.renderers import BaseRenderer, JSONRenderer
+
 
 class XMLRenderer(BaseRenderer):
     media_type = 'application/xml'
@@ -70,28 +71,27 @@ class AirtelC2BMockView(APIView):
 
 
 class AirtelB2CMockView(APIView):
-    # parser_classes = [PlainTextParser]
-    # renderer_classes = [PlainTextRenderer]
-    def post(self, request, *args, **kwargs):
-        response_data = """{
-  "data": {
-    "transaction": {
-      "reference_id": '18*****3354',
-      "airtel_money_id": 'partner-AB***41',
-      "id": 'AB***41',
-      "status": 'TS',
-    },
-  },
-  "status": {
-    "code": '200',
-    "message": 'Trans.ID :  CI2***02. You have sent ***** to 99****39, B****MA . Your available balance is ** 5**.21.',
-    "result_code": 'ESB000010',
-    "response_code": 'DP00900001001',
-    "success": "true",
-  },
-}"""
-        return Response(response_data)
+    renderer_classes = [JSONRenderer]
 
+    def post(self, request, *args, **kwargs):
+        response_data = {
+            "data": {
+                "transaction": {
+                    "reference_id": "18*****3354",
+                    "airtel_money_id": "partner-AB***41",
+                    "id": "AB***41",
+                    "status": "TS",
+                },
+            },
+            "status": {
+                "code": "200",
+                "message": "Trans.ID :  CI2***02. You have sent ***** to 99****39, B****MA . Your available balance is ** 5**.21.",
+                "result_code": "ESB000010",
+                "response_code": "DP00900001001",
+                "success": "true",
+            },
+        }
+        return Response(response_data)
 
 class AirtelDataMockView(APIView):
     renderer_classes = [XMLRenderer]
