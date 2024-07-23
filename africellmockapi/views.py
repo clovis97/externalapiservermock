@@ -3,6 +3,7 @@ from rest_framework.parsers import BaseParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer, BaseRenderer
+from django.http import HttpResponse
 
 class PlainTextParser(BaseParser):
     media_type = 'text/plain'
@@ -44,15 +45,13 @@ class AfricellBalanceCheckMockView(APIView):
 }
         return Response(response_data)
     
+
+
 class AfricellDataBundleMockView(APIView):
     def post(self, request, *args, **kwargs):
-        response_data = {
-            "Code": '0',
-            "Description": 'Successful',
-            "MMTransactionID": '1234',
-            "AfrTransactionID": '1234',
-        }
-        return Response(response_data, content_type='text/plain')
+        response_data = "Code: 0, Description: Successful, MMTransactionID: 1234, AfrTransactionID: 1234"
+        return HttpResponse(response_data, content_type='text/plain')
+
 
     
 class AfricellDataBundleListMockView(APIView):
