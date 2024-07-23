@@ -34,6 +34,7 @@ class AfricellB2CMockView(APIView):
         return Response(response_data)
 
 class AfricellBalanceCheckMockView(APIView):
+    renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "Code": '0',
@@ -44,6 +45,7 @@ class AfricellBalanceCheckMockView(APIView):
         return Response(response_data)
     
 class AfricellDataBundleMockView(APIView):
+    renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "Code": '0',
@@ -54,9 +56,9 @@ class AfricellDataBundleMockView(APIView):
         return Response(response_data)
     
 class AfricellDataBundleListMockView(APIView):
+    renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = [
-    {
+        response_data = [{
         "CatOrder": 1,
         "Name": "Forfait Internet",
         "BundleOrder": 1.0,
