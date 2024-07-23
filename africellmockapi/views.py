@@ -316,14 +316,12 @@ class AfricellDataBundleListMockView(APIView):
         return Response(response_data)
     
 class AfricellSendSmsMockView(APIView):
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
-        response_data = {
-  "Code": '0',
-  "Description": 'Successful',
-  "MMTransactionID": '1234',
-  "AfrTransactionID": '1234',
-}
-        return Response(response_data)
+        print(request.headers)
+        # La réponse simulée en texte brut
+        response_data = '{"Code":"0","Description":"Successful","MMTransactionID":"1234","AfrTransactionID":"1234"}'
+        return HttpResponse(response_data, content_type='text/plain')
     
 import logging
 
