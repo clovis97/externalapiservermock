@@ -45,15 +45,15 @@ class AfricellBalanceCheckMockView(APIView):
         return Response(response_data)
     
 class AfricellDataBundleMockView(APIView):
-    renderer_classes = [JSONRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
-  "Code": '0',
-  "Description": 'Successful',
-  "MMTransactionID": '1234',
-  "AfrTransactionID": '1234',
-}
-        return Response(response_data)
+            "Code": '0',
+            "Description": 'Successful',
+            "MMTransactionID": '1234',
+            "AfrTransactionID": '1234',
+        }
+        return Response(response_data, content_type='text/plain')
+
     
 class AfricellDataBundleListMockView(APIView):
     renderer_classes = [JSONRenderer]
