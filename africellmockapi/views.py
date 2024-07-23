@@ -48,7 +48,9 @@ class AfricellBalanceCheckMockView(APIView):
 
 
 class AfricellDataBundleMockView(APIView):
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
+        print(request.headers)
         response_data = "Code: 0, Description: Successful, MMTransactionID: 1234, AfrTransactionID: 1234"
         return HttpResponse(response_data, content_type='text/plain')
 
