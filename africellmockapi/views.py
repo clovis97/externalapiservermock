@@ -51,7 +51,7 @@ class AfricellDataBundleMockView(APIView):
     renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         print(request.headers)
-        response_data = """"{"Code":"0","Description":"Successful-354880","MMTransactionID":"jbossafricelldatatest2023aug11thFRid1","AfrTransactionID":"5934649862"}"""
+        response_data = '{"Code":"0","Description":"Successful-354880","MMTransactionID":"jbossafricelldatatest2023aug11thFRid1","AfrTransactionID":"5934649862"}'
         return HttpResponse(response_data, content_type='text/plain')
 
 
