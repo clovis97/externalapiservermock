@@ -11,6 +11,6 @@ urlpatterns = [
     path('africell/RechargeBundles', AfricellDataBundleMockView.as_view(), name='africell-data-bundle'),
     path('africell/data/bundle/list', AfricellDataBundleListMockView.as_view(), name='africell-data-bundle-list'),
     path('africell/send/sms', AfricellSendSmsMockView.as_view(), name='africell-send-sms'),
-    path('africell/topup', AfricellTopUpMockView.as_view(), name='africell-topup'),
+    path('africell/SubscriberCreditTransfer', AfricellTopUpMockView.as_view(), name='africell-topup'),
     path('africell/transaction/load', AfricellTransactionLoadMockView.as_view(), name='africell-transaction-load'),
 ]
