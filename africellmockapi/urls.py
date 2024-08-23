@@ -8,7 +8,7 @@ from .views import (
 urlpatterns = [
     path('africell/b2c', AfricellB2CMockView.as_view(), name='africell-b2c'),
     path('africell/GetBalance', AfricellBalanceCheckMockView.as_view(), name='africell-balance-check'),
-    path('africell/data/bundle', AfricellDataBundleMockView.as_view(), name='africell-data-bundle'),
+    path('africell/RechargeBundles', AfricellDataBundleMockView.as_view(), name='africell-data-bundle'),
     path('africell/data/bundle/list', AfricellDataBundleListMockView.as_view(), name='africell-data-bundle-list'),
     path('africell/send/sms', AfricellSendSmsMockView.as_view(), name='africell-send-sms'),
     path('africell/topup', AfricellTopUpMockView.as_view(), name='africell-topup'),
