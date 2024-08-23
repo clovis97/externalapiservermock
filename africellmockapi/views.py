@@ -43,7 +43,7 @@ class AfricellBalanceCheckMockView(APIView):
   "MMTransactionID": '4321',
   "AfrTransactionID": '4321',
 }
-        return Response(response_data, content_type='text/plain')
+        return HttpResponse(response_data, content_type='text/plain')
     
 
 
