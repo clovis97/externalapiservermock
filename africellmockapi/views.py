@@ -35,7 +35,7 @@ class AfricellB2CMockView(APIView):
         return Response(response_data)
 
 class AfricellBalanceCheckMockView(APIView):
-    renderer_classes = [JSONRenderer]
+    renderer_classes = [PlainTextRenderer]
     def post(self, request, *args, **kwargs):
         response_data = {
   "Code": '0',
@@ -43,7 +43,7 @@ class AfricellBalanceCheckMockView(APIView):
   "MMTransactionID": '4321',
   "AfrTransactionID": '4321',
 }
-        return Response(response_data)
+        return Response(response_data, content_type='text/plain')
     
 
 
